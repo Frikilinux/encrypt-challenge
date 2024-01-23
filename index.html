@@ -24,13 +24,15 @@
           </div>
       </section>
       <section class="decrypt-container">
-        <div class="no-message"> 
+        <div class="encrypted-empty"> 
           <img class="search-img" src="./assets/imgs/search-img.svg" alt="Imagen de lupa"/>
           <p class="message-title">Ningún mensaje fue encontrado</p>
           <p class="message-text">Ingresa el texto que desees encriptar o desencriptar.</p>
         </div>
-        <p class="encrypted-message">Mensaje encriptado</p>
-        <button onclick="copyMessage()" class="copy button light-blue">Copiar</button>
+        <div class="output-message">
+          <p>Mensaje encriptado</p>
+          <button onclick="copyMessage()" class="copy button light-blue">Copiar</button>
+        </div>
       </section>
     </div>
     <script src="script.js"></script>

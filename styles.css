@@ -1,19 +1,19 @@
 :root {
-  --Light-blue-light-blue-100: #f3f5fc;
-  --Light-blue-light-blue-200: #eff1fa;
-  --Light-blue-light-blue-300: #e9ecf8;
-  --Light-blue-light-blue-400: #aab2d5;
-  --Light-blue-light-blue-500: #757fb2;
-  --Dark-blue-dark-blue-100: #609ed4;
-  --Dark-blue-dark-blue-200: #356ea9;
-  --Dark-blue-dark-blue-300: #0a3871;
-  --Dark-blue-dark-blue-400: #072b61;
-  --Dark-blue-dark-blue-500: #052051;
-  --Gray-gray-100: #ced4da;
-  --Gray-gray-200: #adb5bd;
-  --Gray-gray-300: #868e96;
-  --Gray-gray-400: #495057;
-  --Gray-gray-500: #343a40;
+  --light-blue-100: #f3f5fc;
+  --light-blue-200: #eff1fa;
+  --light-blue-300: #e9ecf8;
+  --light-blue-400: #aab2d5;
+  --light-blue-500: #757fb2;
+  --dark-blue-100: #609ed4;
+  --dark-blue-200: #356ea9;
+  --dark-blue-300: #0a3871;
+  --dark-blue-400: #072b61;
+  --dark-blue-500: #052051;
+  --gray-100: #ced4da;
+  --gray-200: #adb5bd;
+  --gray-300: #868e96;
+  --gray-400: #495057;
+  --gray-500: #343a40;
 }
 
 * {
@@ -21,46 +21,50 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
+  color: var(--dark-blue-500);
 }
 
 body {
   display: flex;
   justify-content: center;
-  background-color: var(--Light-blue-light-blue-100);
+  background-color: var(--light-blue-100);
 }
 
 .container {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
   padding: 40px;
   min-height: 100vh;
   max-width: 1440px;
   width: 100%;
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-  background-color: var(--Light-blue-light-blue-100);
+  background-color: var(--light-blue-100);
 }
 
 .button {
+  flex: 1;
+  max-height: 56px;
   cursor: pointer;
   font-size: 20px;
   padding: 15px 32px;
   gap: 8px;
   border-radius: 24px;
-  border: 1px solid var(--Dark-blue-dark-blue-300);
+  border: 1px solid var(--dark-blue-300);
 }
 
 .dark-blue-300 {
-  background: var(--Dark-blue-dark-blue-300);
+  background: var(--dark-blue-300);
 }
 
 .dark-blue-400 {
-  color: #eff1fa;
-  background: var(--Dark-blue-dark-blue-400, #072b61);
+  color: var(--light-blue-200);
+  background: var(--dark-blue-400);
 }
 
 .ligth-blue {
-  border: 1px solid var(--Dark-blue-dark-blue-300, #0a3871);
-  background: var(--Light-blue-light-blue-200, #eff1fa);
+  border: 1px solid var(--dark-blue-300);
+  background: var(--light-blue-200);
 }
 
 .logo {
@@ -76,23 +80,27 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding-top: 120px;
   gap: 16px;
-  min-height: 90vh;
+  height: 100%;
+  /* min-height: 90vh; */
 }
 
 .message p {
   align-self: flex-start;
   text-align: center;
-  color: var(--Gray-gray-400);
+  color: var(--gray-400);
 }
 
 .message-input {
+  flex: 1;
   font-size: 32px;
   background-color: transparent;
   border: none;
   width: 95%;
-  padding-top: 50px;
+  min-height: 350px;
+  /* padding-top: 50px; */
 }
 
 .message-input:focus {
@@ -100,18 +108,19 @@ header {
 }
 
 .message-input::placeholder {
-  color: var(--Light-blue-light-blue-500);
+  color: var(--light-blue-500);
 }
 
 .decrypt-container {
   display: flex;
-  font-size: 32px;
+  flex: 1;
+  font-size: 24px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 16px;
   max-width: 400px;
-  min-height: 90vh;
+  height: 100%;
   padding: 32px;
   background-color: #fff;
   border-radius: 32px;
@@ -132,32 +141,48 @@ header {
 .message-text {
   font-size: 20px;
   text-align: center;
-  color: var(--Gray-gray-400);
+  color: var(--gray-400);
 }
 
-.encrypted-message {
-  padding: 32px 0;
+.encrypted-empty {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.output-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  gap: 24px;
+  display: none;
   flex: 1;
 }
 
-.encrypted-message,
-.copy {
-  display: none;
+.output-message p {
+  width: 100%;
+  padding: 32px 0;
 }
 
 .buttons-container {
   display: flex;
   flex-direction: column;
+  gap: 10px;
   width: 100%;
 }
 
 .buttons {
   display: flex;
   justify-content: space-between;
+  gap: 24px;
   width: 100%;
 }
 
 @media (max-width: 768px) {
+  .message {
+    width: 100%;
+  }
   .decrypt-container {
     align-self: center;
     min-height: unset;
@@ -177,15 +202,23 @@ header {
   .search-img {
     display: none;
   }
+
+  .buttons {
+    gap: 24px;
+    justify-content: space-around;
+  }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 576px) {
   .buttons {
     flex-direction: column;
-    gap: 16px;
   }
 
   .container {
     padding: 16px;
+  }
+
+  .message {
+    padding-top: 80px;
   }
 }

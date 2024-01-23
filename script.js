@@ -6,6 +6,12 @@ const keys = [
   ['u', 'ufat'],
 ]
 
+const setOutputText = (output) => {
+  document.querySelector('.encrypted-empty').style.display = 'none'
+  document.querySelector('.output-message').style.display = 'flex'
+  document.querySelector('.output-message p').textContent = output
+}
+
 const encryptMessage = () => {
   const messageInput = document.querySelector('.message-input').value
   if (!messageInput) return
@@ -18,10 +24,7 @@ const encryptMessage = () => {
     }
   }
 
-  document.querySelector('.no-message').style.display = 'none'
-  document.querySelector('.encrypted-message').style.display = 'block'
-  document.querySelector('.encrypted-message').textContent = encryptedText
-  document.querySelector('.copy').style.display = 'block'
+  setOutputText(encryptedText)
 }
 
 const decryptMessage = () => {
@@ -36,27 +39,15 @@ const decryptMessage = () => {
     }
   }
 
-  document.querySelector('.no-message').style.display = 'none'
-  document.querySelector('.encrypted-message').style.display = 'block'
-  document.querySelector('.encrypted-message').textContent = encryptedText
-  document.querySelector('.copy').style.display = 'block'
+  setOutputText(encryptedText)
 }
 
 const copyMessage = () => {
-  const encryptedText = document.querySelector('.encrypted-message').textContent
+  const encryptedText = document.querySelector('.output-message p').textContent
 
-  navigator.clipboard.writeText(encryptedText).then(
-    () => {
-      console.log('Text copied to clipboard')
-    },
-    () => {
-      /* clipboard write failed */
-      console.log('Failed to copy text')
-    }
-  )
+  navigator.clipboard.writeText(encryptedText)
 
-  document.querySelector('.no-message').style.display = 'block'
-  document.querySelector('.encrypted-message').style.display = 'none'
-  document.querySelector('.copy').style.display = 'none'
+  document.querySelector('.encrypted-empty').style.display = 'flex'
+  document.querySelector('.output-message').style.display = 'none'
   document.querySelector('.message-input').value = ''
 }
