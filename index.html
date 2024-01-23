@@ -9,25 +9,34 @@
   <body>
     <div class="container">
       <header class="logo">
-        <h1 >
-          <img  src="./assets/imgs/logo.svg" alt="Logo Alura" />
+        <h1>
+          <img src="./assets/imgs/logo.svg" alt="Logo Alura" />
         </h1>
       </header>
       <section class="message">
-        <textarea class="message-input" placeholder="Ingrese el texto aquí"></textarea />
-          <div class="buttons-container">
-            <p>&#x1F6C8; Sólo letras minúsculas y sin acentos</p>
-            <div class="buttons">
-              <button onclick="processMsg('encrypt')" class="encrypt button dark-blue-400">Encriptar</button>
-              <button onclick="processMsg('decrypt')" class="decrypt button light-blue">Desencriptar</button>
-            </div>
+        <textarea class="message-input" placeholder="Ingrese el texto aquí"></textarea>
+        <div class="buttons-container">
+          <p>&#x1F6C8; Sólo letras minúsculas y sin acentos</p>
+          <div class="buttons">
+            <button onclick="processMsg('encrypt')" class="encrypt button dark-blue-400">
+              Encriptar
+            </button>
+            <button onclick="processMsg('decrypt')" class="decrypt button light-blue">
+              Desencriptar
+            </button>
           </div>
+        </div>
       </section>
       <section class="decrypt-container">
-        <div class="encrypted-empty"> 
-          <img class="search-img" src="./assets/imgs/search-img.svg" alt="Imagen de lupa"/>
+        <div class="encrypted-empty">
+          <img
+            class="search-img"
+            src="./assets/imgs/search-img.svg"
+            alt="Imagen de lupa" />
           <p class="message-title">Ningún mensaje fue encontrado</p>
-          <p class="message-text">Ingresa el texto que desees encriptar o desencriptar.</p>
+          <p class="message-text">
+            Ingresa el texto que desees encriptar o desencriptar.
+          </p>
         </div>
         <div class="output-message">
           <p>Mensaje encriptado</p>
