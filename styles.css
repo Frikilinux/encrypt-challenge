@@ -34,12 +34,19 @@ body {
   display: flex;
   align-items: start;
   justify-content: space-between;
-  gap: 16px;
-  padding: 40px;
+  gap: 5%;
+  padding: 3%;
   min-height: 100vh;
   max-width: 1440px;
   width: 100%;
   background-color: var(--light-blue-100);
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
 }
 
 .button {
@@ -50,30 +57,34 @@ body {
   padding: 15px 32px;
   gap: 8px;
   border-radius: 24px;
-  border: 1px solid var(--dark-blue-300);
-}
-
-.dark-blue-300 {
-  background: var(--dark-blue-300);
-}
-
-.dark-blue-400 {
   color: var(--light-blue-200);
   background: var(--dark-blue-400);
+  border: 2px solid var(--dark-blue-400);
+  transition: 0.25s;
 }
 
-.ligth-blue {
-  border: 1px solid var(--dark-blue-300);
+.light-blue {
+  color: var(--dark-blue-500);
+  border: 2px solid var(--dark-blue-300);
   background: var(--light-blue-200);
+}
+
+.encrypt:hover {
+  color: var(--dark-blue-500);
+  /* border: 2px solid var(--dark-blue-400); */
+  background: var(--gray-100);
+  /* transform: scale(1.01); */
+}
+
+.decrypt:hover,
+.copy:hover {
+  border: 2px solid var(--dark-blue-400);
+  background: var(--gray-100);
 }
 
 .logo {
   display: flex;
   height: 48px;
-}
-
-header {
-  width: 120ox;
 }
 
 .message {
@@ -84,7 +95,8 @@ header {
   padding-top: 120px;
   gap: 16px;
   height: 100%;
-  /* min-height: 90vh; */
+  width: 100%;
+  max-width: 680px;
 }
 
 .message p {
@@ -100,7 +112,7 @@ header {
   border: none;
   width: 95%;
   min-height: 350px;
-  /* padding-top: 50px; */
+  resize: none;
 }
 
 .message-input:focus {
@@ -119,6 +131,7 @@ header {
   align-items: center;
   justify-content: center;
   gap: 16px;
+  min-width: 300px;
   max-width: 400px;
   height: 100%;
   padding: 32px;
@@ -172,20 +185,15 @@ header {
   width: 100%;
 }
 
-.buttons {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  width: 100%;
-}
-
 @media (max-width: 768px) {
   .message {
     width: 100%;
+    padding-top: 60px;
   }
   .decrypt-container {
     align-self: center;
     min-height: unset;
+    max-width: unset;
     width: 95%;
   }
 
@@ -204,7 +212,6 @@ header {
   }
 
   .buttons {
-    gap: 24px;
     justify-content: space-around;
   }
 }
@@ -216,9 +223,5 @@ header {
 
   .container {
     padding: 16px;
-  }
-
-  .message {
-    padding-top: 80px;
   }
 }

@@ -1,15 +1,17 @@
 const keys = [
+  ['a', 'ai'],
   ['e', 'enter'],
   ['i', 'imes'],
   ['o', 'ober'],
-  ['a', 'ai'],
   ['u', 'ufat'],
 ]
 
 const reverseKeys = () => {
+  const reverseKeys = keys.reverse()
+
   let newKeys = []
-  for (let i = 0; i < keys.length; i++) {
-    newKeys[i] = keys[i].reverse()
+  for (let i = 0; i < reverseKeys.length; i++) {
+    newKeys[i] = reverseKeys[i].reverse()
   }
   return newKeys
 }
