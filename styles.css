@@ -126,7 +126,8 @@ body {
   background-color: transparent;
   border: none;
   width: 95%;
-  /* min-height: 350px; */
+  min-height: 250px;
+  height: auto;
   resize: none;
 }
 
@@ -209,6 +210,12 @@ body {
     width: 100%;
     padding-top: 60px;
   }
+
+  .crypted-message {
+    flex: unset;
+    min-height: unset;
+  }
+
   .decrypt-container {
     align-self: center;
     min-height: unset;

@@ -51,6 +51,9 @@ const processMsg = (action) => {
   }
 
   setOutputText(encryptedText)
+  getElement('.crypted-message').style.height = `${
+    getElement('.crypted-message').scrollHeight
+  }px`
 }
 
 const copyMsg = async () => {
