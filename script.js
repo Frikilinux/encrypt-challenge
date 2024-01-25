@@ -27,7 +27,7 @@ const cleanText = () => {
 const handleInput = (e) => {
   if (/^[A-Z]*$/.test(e.key) || /[áéíóú]/i.test(e.key)) {
     e.preventDefault()
-    setWarn('Sólo minúsculas y nigún tilde, please')
+    setWarn('Sólo minúsculas y ningún tilde, please')
     return
   }
   getElement('.warning p').textContent = ''
@@ -49,11 +49,9 @@ const processMsg = (action) => {
   for (let i = 0; i < keys.length; i++) {
     encryptedText = encryptedText.replaceAll(keys[i][k[0]], keys[i][k[1]])
   }
-
   setOutputText(encryptedText)
-  getElement('.crypted-message').style.height = `${
-    getElement('.crypted-message').scrollHeight
-  }px`
+  const text = getElement('.crypted-message')
+  text.style.height = `${text.scrollHeight}px`
 }
 
 const copyMsg = async () => {
