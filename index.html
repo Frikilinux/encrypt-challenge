@@ -14,21 +14,20 @@
         </h1>
       </header>
       <section class="message">
-        <textarea class="message-input" placeholder="Ingrese el texto aquí"></textarea>
+        <textarea class="input-message" placeholder="Ingrese el texto aquí"></textarea>
         <div class="buttons-container">
           <!-- <p>&#x1F6C8; Sólo letras minúsculas y sin acentos</p> -->
-          <p>
-            <picture>
-              <img src="./assets/imgs/info.svg" alt="Icono de info" />
-            </picture>
-            Sólo letras minúsculas y sin acentos
-          </p>
+          <div class="warning">
+            <img src="./assets/imgs/info.svg" alt="Icono de info" />
+            <p>Sólo letras minúsculas y sin acentos</p>
+          </div>
           <div class="buttons">
-            <button onclick="processMsg('encrypt')" class="encrypt button">
-              Encriptar
-            </button>
-            <button onclick="processMsg('decrypt')" class="decrypt button light-blue">
+            <button onclick="processMsg()" class="encrypt button">Encriptar</button>
+            <button onclick="decrypt()" class="decrypt button light-blue">
               Desencriptar
+            </button>
+            <button onclick="cleanText()" class="clean button">
+              <img src="./assets/imgs/trash.svg" alt="Icono de una papelera" />
             </button>
           </div>
         </div>
@@ -45,11 +44,15 @@
           </p>
         </div>
         <div class="output-message">
-          <p>Mensaje encriptado</p>
-          <button onclick="copyMessage()" class="copy button light-blue">Copiar</button>
+          <textarea
+            class="crypted-message"
+            placeholder="Mensaje encriptado"
+            readonly></textarea>
+          <!-- <p>Mensaje encriptado</p> -->
+          <button onclick="copyMsg()" class="copy button light-blue">Copiar</button>
         </div>
       </section>
     </div>
-    <script src="script.js"></script>
+    <script src="./script2.js"></script>
   </body>
 </html>

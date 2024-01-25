@@ -55,7 +55,7 @@ body {
   cursor: pointer;
   font-size: 20px;
   padding: 15px 32px;
-  gap: 8px;
+  gap: 2%;
   border-radius: 24px;
   color: var(--light-blue-200);
   background: var(--dark-blue-400);
@@ -67,6 +67,11 @@ body {
   color: var(--dark-blue-500);
   border: 2px solid var(--dark-blue-300);
   background: var(--light-blue-200);
+}
+
+.clean {
+  flex: none;
+  padding: 15px;
 }
 
 .encrypt:hover {
@@ -99,28 +104,36 @@ body {
   max-width: 680px;
 }
 
-.message p {
-  align-self: flex-start;
-  text-align: center;
+.warning {
+  display: flex;
+  gap: 10px;
   color: var(--gray-400);
+  .warning-text {
+    color: rgb(240, 24, 9);
+  }
 }
 
-.message-input {
+.input-message,
+.crypted-message {
   flex: 1;
   font-size: 32px;
   background-color: transparent;
   border: none;
   width: 95%;
-  min-height: 350px;
+  /* min-height: 350px; */
   resize: none;
 }
 
-.message-input:focus {
+.input-message:focus,
+.crypted-message:focus {
   outline: none;
 }
-
-.message-input::placeholder {
+.input-message::placeholder {
   color: var(--light-blue-500);
+}
+
+.input-message:focus::placeholder {
+  color: transparent;
 }
 
 .decrypt-container {
@@ -185,7 +198,7 @@ body {
   width: 100%;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .message {
     width: 100%;
     padding-top: 60px;
@@ -219,6 +232,10 @@ body {
 @media (max-width: 576px) {
   .buttons {
     flex-direction: column;
+  }
+
+  .input-message {
+    min-height: 200px;
   }
 
   .container {
