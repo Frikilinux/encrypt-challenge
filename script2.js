@@ -63,8 +63,13 @@ function decrypt() {
   setOutput(outputMsg)
 }
 
-function copyMsg() {
+async function copyMsg() {
   const text = getElement('.crypted-message').value
-  navigator.clipboard.writeText(text)
-  cleanText()
+  try {
+    await navigator.clipboard.writeText(text)
+    cleanText()
+    setWarn('Mensaje copiado al portapapeles')
+  } catch (error) {
+    setWarn('No se pudo copiar al portapapeles')
+  }
 }
