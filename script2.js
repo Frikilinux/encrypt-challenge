@@ -17,11 +17,24 @@ const cleanText = () => {
   getElement('.crypted-message').value = ''
   getElement('.encrypted-empty').style.display = 'flex'
   getElement('.output-message').style.display = 'none'
+  getElement('.warning p').textContent = ''
 }
 
 function getElement(element) {
   return document.querySelector(element)
 }
+
+function handleInput(e) {
+  console.log(e)
+  if (/^[A-Z]*$/.test(e.key) || /[áéíóú]/i.test(e.key)) {
+    e.preventDefault()
+    setWarn('Sólo minúsculas y nigún tilde, please')
+    return
+  }
+  getElement('.warning p').textContent = ''
+}
+
+getElement('.input-message').addEventListener('keydown', handleInput)
 
 function setWarn(text) {
   getElement('.warning p').classList.add('warning-text')
@@ -30,9 +43,8 @@ function setWarn(text) {
 
 function processMsg() {
   const inputMsg = getElement('.input-message').value
-  const regx = /[aeiouáéíóú]/gi
   if (!inputMsg) return
-  const outputMsg = inputMsg.replace(regx, (char) => {
+  const outputMsg = inputMsg.replace(/[aeiouáéíóú]/gi, (char) => {
     for (let key in keys) {
       if (keys[key].includes(char.toLowerCase())) return key
     }
