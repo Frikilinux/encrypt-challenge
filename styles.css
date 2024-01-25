@@ -45,6 +45,7 @@ body {
 .buttons {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 24px;
   width: 100%;
 }
@@ -55,6 +56,7 @@ body {
   cursor: pointer;
   font-size: 20px;
   padding: 15px 32px;
+  width: 100%;
   gap: 2%;
   border-radius: 24px;
   color: var(--light-blue-200);
@@ -73,6 +75,7 @@ body {
   flex: none;
   padding: 15px;
   border-radius: 50%;
+  width: unset;
 }
 
 .encrypt:hover {
