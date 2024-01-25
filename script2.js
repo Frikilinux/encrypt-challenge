@@ -25,7 +25,6 @@ function getElement(element) {
 }
 
 function handleInput(e) {
-  console.log(e)
   if (/^[A-Z]*$/.test(e.key) || /[áéíóú]/i.test(e.key)) {
     e.preventDefault()
     setWarn('Sólo minúsculas y nigún tilde, please')
@@ -34,7 +33,7 @@ function handleInput(e) {
   getElement('.warning p').textContent = ''
 }
 
-getElement('.input-message').addEventListener('keydown', handleInput)
+// getElement('.input-message').addEventListener('keydown', handleInput)
 
 function setWarn(text) {
   getElement('.warning p').classList.add('warning-text')
