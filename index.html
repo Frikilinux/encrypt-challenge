@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="./assets/imgs/logo.svg" />
     <link rel="stylesheet" href="styles.css" />
     <title>Encryptador de Texto</title>
   </head>
@@ -19,9 +20,10 @@
           placeholder="Ingrese el texto aquí"
           onkeydown="handleInput(event)"></textarea>
         <div class="buttons-container">
-          <!-- <p>&#x1F6C8; Sólo letras minúsculas y sin acentos</p> -->
+          <!-- <p> Sólo letras minúsculas y sin acentSos</p> -->
           <div class="warning">
-            <img src="./assets/imgs/info.svg" alt="Icono de info" />
+            <!-- <img src="./assets/imgs/info.svg" alt="Icono de info" /> -->
+            <span>&#x1F6C8;</span>
             <p>Sólo letras minúsculas y sin acentos</p>
           </div>
           <div class="buttons">
@@ -35,7 +37,7 @@
           </div>
         </div>
       </section>
-      <section class="decrypt-container">
+      <section id="output" class="encrypted-container">
         <div class="encrypted-empty">
           <img
             class="search-img"
@@ -47,10 +49,7 @@
           </p>
         </div>
         <div class="output-message">
-          <textarea
-            class="crypted-message"
-            placeholder="Mensaje encriptado"
-            readonly></textarea>
+          <div class="crypted-message" placeholder="Mensaje encriptado" readonly></div>
           <!-- <p>Mensaje encriptado</p> -->
           <button onclick="copyMsg()" class="copy button light-blue">Copiar</button>
         </div>

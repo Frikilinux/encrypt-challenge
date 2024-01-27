@@ -16,11 +16,15 @@
   --gray-500: #343a40;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: sans-serif;
   color: var(--dark-blue-500);
 }
 
@@ -111,16 +115,19 @@ body {
 .warning {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   color: var(--gray-400);
   height: 30px;
-  .warning-text {
-    color: rgb(240, 24, 9);
+  span {
+    vertical-align: middle;
+    color: #f01809;
+  }
+  p {
+    color: #f01809;
   }
 }
 
-.input-message,
-.crypted-message {
+.input-message {
   flex: 1;
   font-size: 32px;
   background-color: transparent;
@@ -131,8 +138,7 @@ body {
   resize: none;
 }
 
-.input-message:focus,
-.crypted-message:focus {
+.input-message:focus {
   outline: none;
 }
 .input-message::placeholder {
@@ -143,9 +149,17 @@ body {
   color: transparent;
 }
 
-.decrypt-container {
+.crypted-message {
+  overflow-wrap: break-word;
+  overflow-x: scroll;
+  overflow-x: hidden;
+  height: 100%;
+  max-height: 65vh;
+}
+
+.encrypted-container {
   display: flex;
-  flex: 1;
+  /* flex: 1; */
   font-size: 24px;
   flex-direction: column;
   align-items: center;
@@ -211,12 +225,7 @@ body {
     padding-top: 60px;
   }
 
-  .crypted-message {
-    flex: unset;
-    min-height: unset;
-  }
-
-  .decrypt-container {
+  .encrypted-container {
     align-self: center;
     min-height: unset;
     max-width: unset;

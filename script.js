@@ -13,34 +13,35 @@ const getElement = (element) => {
 const setOutputText = (output) => {
   getElement('.encrypted-empty').style.display = 'none'
   getElement('.output-message').style.display = 'flex'
-  getElement('.crypted-message').value = output
+  getElement('.crypted-message').textContent = output
 }
 
 const cleanText = () => {
   getElement('.input-message').value = ''
-  getElement('.crypted-message').value = ''
+  getElement('.crypted-message').textContent = ''
   getElement('.encrypted-empty').style.display = 'flex'
   getElement('.output-message').style.display = 'none'
   setWarn('')
 }
 
 const handleInput = (e) => {
-  if (/^[A-Z]*$/.test(e.key) || /[áéíóú]/i.test(e.key)) {
+  if (/[A-Z]$/.test(e.key) || /[áéíóú]/i.test(e.key)) {
     e.preventDefault()
-    setWarn('Sólo minúsculas y ningún tilde, please')
+    setWarn('Sólo minúsculas y ninguna tilde, please')
     return
   }
-  getElement('.warning p').textContent = ''
+  getElement('.warning').textContent = ''
 }
 
 const setWarn = (text) => {
-  getElement('.warning p').classList.add('warning-text')
-  getElement('.warning p').textContent = text
+  // getElement('.warning p').classList.add('warning-text')
+  getElement('.warning').innerHTML = `<span>&#x1F6C8;</span>
+  <p>${text}</p>`
 }
 
 const processMsg = (action) => {
   const k = [0, 1]
-  if (action === 'decrypt') k.reverse()
+  action === 'decrypt' && k.reverse()
 
   const messageInput = document.querySelector('.input-message').value
   if (!messageInput) return
@@ -50,12 +51,11 @@ const processMsg = (action) => {
     encryptedText = encryptedText.replaceAll(keys[i][k[0]], keys[i][k[1]])
   }
   setOutputText(encryptedText)
-  const text = getElement('.crypted-message')
-  text.style.height = `${text.scrollHeight}px`
+  window.location.replace('#output')
 }
 
 const copyMsg = async () => {
-  const text = getElement('.crypted-message').value
+  const text = getElement('.crypted-message').textContent
   try {
     await navigator.clipboard.writeText(text)
     cleanText()
