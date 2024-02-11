@@ -1,13 +1,13 @@
 const keys = [
+  ['a', 'ai'],
   ['e', 'enter'],
   ['i', 'imes'],
-  ['a', 'ai'],
   ['o', 'ober'],
   ['u', 'ufat'],
 ]
 
-const getElement = (element) => {
-  return document.querySelector(element)
+const getElement = (tags) => {
+  return document.querySelector(tags)
 }
 
 const setOutputText = (output) => {
@@ -24,36 +24,64 @@ const cleanText = () => {
   setWarn('')
 }
 
-const handleInput = (e) => {
-  if (/[A-Z]$/.test(e.key) || /[áéíóú]/i.test(e.key)) {
-    e.preventDefault()
-    setWarn('Sólo minúsculas y ninguna tilde, please')
-    return
-  }
-  getElement('.warning').textContent = ''
+const handleInput = () => {
+  getElement('.warning p').textContent = ''
+}
+
+const ilegalInput = (str) => {
+  let regex = /[^a-z 0-9]/g
+  return regex.test(str)
 }
 
 const setWarn = (text) => {
-  // getElement('.warning p').classList.add('warning-text')
-  getElement('.warning').innerHTML = `<span>&#x1F6C8;</span>
-  <p>${text}</p>`
+  getElement('.warning p').textContent = `${text}`
 }
 
-const processMsg = (action) => {
-  const k = [0, 1]
-  action === 'decrypt' && k.reverse()
+// Helper function to replace the character with the given keys
+const searchAndReplace = (char) => {
+  for (let i = 0; i < keys.length; i++) {
+    if (char === keys[i][0]) return keys[i][1]
+  }
+  return char
+}
 
+// Encrypt message iterating message characters
+const encryptMsg = (msg) => {
+  let encryptedOutput = ''
+  for (let i = 0; i < msg.length; i++) {
+    encryptedOutput += searchAndReplace(msg[i])
+  }
+  return encryptedOutput
+}
+
+// Decrypt text usong replace method
+const decryptText = (msg) => {
+  let decryptedOutput = msg
+  for (let i = 0; i < keys.length; i++) {
+    decryptedOutput = decryptedOutput.replaceAll(keys[i][1], keys[i][0])
+  }
+  return decryptedOutput
+}
+
+// Main funtion
+const processMsg = (action) => {
   const messageInput = document.querySelector('.input-message').value
   if (!messageInput) return
-  let encryptedText = messageInput.toLowerCase()
 
-  for (let i = 0; i < keys.length; i++) {
-    encryptedText = encryptedText.replaceAll(keys[i][k[0]], keys[i][k[1]])
+  if (ilegalInput(messageInput)) {
+    setWarn('Sólo minúsculas y ninguna tilde. Corrige eso!, please.')
+    return
   }
-  setOutputText(encryptedText)
+
+  if (action === 'decrypt') {
+    setOutputText(decryptText(messageInput))
+  } else {
+    setOutputText(encryptMsg(messageInput))
+  }
   window.location.replace('#output')
 }
 
+// Copy meesage using Clipboard API
 const copyMsg = async () => {
   const text = getElement('.crypted-message').textContent
   try {

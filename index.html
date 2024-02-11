@@ -18,13 +18,13 @@
         <textarea
           class="input-message"
           placeholder="Ingrese el texto aquí"
-          onkeydown="handleInput(event)"></textarea>
+          onkeydown="handleInput()"></textarea>
         <div class="buttons-container">
           <!-- <p> Sólo letras minúsculas y sin acentSos</p> -->
           <div class="warning">
             <!-- <img src="./assets/imgs/info.svg" alt="Icono de info" /> -->
-            <span>&#x1F6C8;</span>
-            <p>Sólo letras minúsculas y sin acentos</p>
+            <span><img src="./assets/imgs/info.svg" alt="Info icon" /></span>
+            <p class="warn-msg">Sólo letras minúsculas y sin acentos</p>
           </div>
           <div class="buttons">
             <button onclick="processMsg()" class="encrypt button">Encriptar</button>
