@@ -66,13 +66,14 @@ body {
   color: var(--light-blue-200);
   background: var(--dark-blue-400);
   border: 2px solid var(--dark-blue-400);
-  transition: 0.25s;
+  transition: 0.2s;
 }
 
-.light-blue {
+.decrypt,
+.copy {
   color: var(--dark-blue-500);
   border: 2px solid var(--dark-blue-300);
-  background: var(--light-blue-200);
+  background: transparent;
 }
 
 .clean {
@@ -84,15 +85,14 @@ body {
 
 .encrypt:hover {
   color: var(--dark-blue-500);
-  /* border: 2px solid var(--dark-blue-400); */
-  background: var(--gray-100);
-  /* transform: scale(1.01); */
+  background: transparent;
 }
 
 .decrypt:hover,
 .copy:hover {
   border: 2px solid var(--dark-blue-400);
-  background: var(--gray-100);
+  background: var(--light-blue-500);
+  color: var(--light-blue-300);
 }
 
 .logo {
@@ -120,10 +120,6 @@ body {
   height: 30px;
   span {
     vertical-align: middle;
-    color: #f01809;
-  }
-  p {
-    font-weight: 500;
     color: #f01809;
   }
 }
@@ -156,7 +152,6 @@ body {
   overflow-x: hidden;
   height: 100%;
   width: 100%;
-  /* max-height: 65vh; */
 }
 
 .encrypted-container {
@@ -193,19 +188,23 @@ body {
   color: var(--gray-400);
 }
 
-.encrypted-empty {
+.show.output-message,
+.show.encrypted-empty {
   display: flex;
+}
+
+.encrypted-empty {
+  display: none;
   flex-direction: column;
   gap: 24px;
 }
 
 .output-message {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
   gap: 24px;
-  display: none;
   flex: 1;
 }
 

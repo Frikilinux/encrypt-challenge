@@ -6,21 +6,21 @@ const keys = [
   ['u', 'ufat'],
 ]
 
-const getElement = (tags) => {
-  return document.querySelector(tags)
+const getElement = (selector) => {
+  return document.querySelector(selector)
 }
 
 const setOutputText = (output) => {
-  getElement('.encrypted-empty').style.display = 'none'
-  getElement('.output-message').style.display = 'flex'
+  getElement('.encrypted-empty').classList.remove('show')
+  getElement('.output-message').classList.add('show')
   getElement('.crypted-message').textContent = output
 }
 
 const cleanText = () => {
   getElement('.input-message').value = ''
   getElement('.crypted-message').textContent = ''
-  getElement('.encrypted-empty').style.display = 'flex'
-  getElement('.output-message').style.display = 'none'
+  getElement('.encrypted-empty').classList.add('show')
+  getElement('.output-message').classList.remove('show')
   setWarn('')
 }
 
@@ -57,7 +57,7 @@ const encryptMsg = (msg) => {
 // Decrypt text usong replace method
 const decryptText = (msg) => {
   let decryptedOutput = msg
-  for (let i = 0; i < keys.length; i++) {
+  for (let i = keys.length - 1; i >= 0; i--) {
     decryptedOutput = decryptedOutput.replaceAll(keys[i][1], keys[i][0])
   }
   return decryptedOutput
@@ -65,18 +65,22 @@ const decryptText = (msg) => {
 
 // Main funtion
 const processMsg = (action) => {
-  const messageInput = getElement('.input-message').value
-  if (!messageInput) return
+  const inputMsg = getElement('.input-message').value
 
-  if (ilegalInput(messageInput)) {
+  if (!inputMsg) {
+    setWarn('Ingresa algún texto antes.')
+    return
+  }
+
+  if (ilegalInput(inputMsg)) {
     setWarn('Sólo minúsculas y ninguna tilde. Corrige eso!, please.')
     return
   }
 
   if (action === 'decrypt') {
-    setOutputText(decryptText(messageInput))
+    setOutputText(decryptText(inputMsg))
   } else {
-    setOutputText(encryptMsg(messageInput))
+    setOutputText(encryptMsg(inputMsg))
   }
   window.location.replace('#output')
 }
