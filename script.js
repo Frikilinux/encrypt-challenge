@@ -65,7 +65,7 @@ const decryptText = (msg) => {
 
 // Main funtion
 const processMsg = (action) => {
-  const messageInput = document.querySelector('.input-message').value
+  const messageInput = getElement('.input-message').value
   if (!messageInput) return
 
   if (ilegalInput(messageInput)) {
