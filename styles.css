@@ -94,8 +94,7 @@ body {
 .decrypt:hover,
 .copy:hover {
   border: 2px solid var(--dark-blue-400);
-  background: var(--light-blue-500);
-  color: var(--light-blue-300);
+  background: var(--gray-100);
 }
 
 .logo {
