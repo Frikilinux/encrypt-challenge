@@ -15,22 +15,25 @@
         </h1>
       </header>
       <section class="message">
-        <textarea
-          class="input-message"
-          placeholder="Ingrese el texto aquí"
-          onkeydown="handleInput()"></textarea>
+        <div class="textarea-container">
+          <textarea
+            class="input-message"
+            placeholder="Ingrese el texto aquí"
+            onkeydown="handleInput()"></textarea>
+          <button onclick="cleanText()" class="clean button">
+            <img src="./assets/imgs/trash.svg" alt="Icono de una papelera" />
+          </button>
+        </div>
+
         <div class="buttons-container">
           <div class="warning">
-            <span><img src="./assets/imgs/info.svg" alt="Info icon" /></span>
+            <img src="./assets/imgs/info.svg" alt="Info icon" />
             <p class="warn-msg">Sólo letras minúsculas y sin acentos</p>
           </div>
           <div class="buttons">
             <button onclick="processMsg()" class="encrypt button">Encriptar</button>
             <button onclick="processMsg('decrypt')" class="decrypt button light-blue">
               Desencriptar
-            </button>
-            <button onclick="cleanText()" class="clean button">
-              <img src="./assets/imgs/trash.svg" alt="Icono de una papelera" />
             </button>
           </div>
         </div>
