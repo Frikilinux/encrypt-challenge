@@ -77,11 +77,10 @@ const processMsg = (action) => {
     return
   }
 
-  if (action === 'decrypt') {
-    setOutputText(decryptText(inputMsg))
-  } else {
-    setOutputText(encryptMsg(inputMsg))
-  }
+  action === 'decrypt'
+    ? setOutputText(decryptText(inputMsg))
+    : setOutputText(encryptMsg(inputMsg))
+
   window.location.replace('#output')
 }
 
